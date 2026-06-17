@@ -25,3 +25,28 @@ exports.create = async (req, res) => {
 
   res.send("Application created");
 };
+
+exports.update = async (req, res) => {
+  try {
+    const { Status } = req.body;
+    const { id } = req.params;
+
+    console.log("Updating:", { id, Status });
+
+    const result = await sql.query`
+      UPDATE JobApplications
+      SET Status = ${Status}
+      WHERE Id = ${id}
+    `;
+
+    console.log("Rows affected:", result.rowsAffected);
+
+    res.json({
+      success: true,
+      rowsAffected: result.rowsAffected
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err.message);
+  }
+};

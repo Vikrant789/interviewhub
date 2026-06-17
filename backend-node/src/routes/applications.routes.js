@@ -3,5 +3,6 @@ const ctrl = require("../controllers/applications.controller");
 
 router.get("/", ctrl.getAll);
 router.post("/", ctrl.create);
+router.put("/:id", ctrl.update);
 
 module.exports = router;
