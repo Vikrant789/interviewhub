@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -7,11 +7,13 @@ import Jobs from "../pages/Jobs";
 
 import Layout from "../components/Layout";
 import ProtectedRoute from "../components/ProtectedRoute";
+import InterviewCalendarPage from "../pages/InterviewCalendarPage";
 
 const AppRoutes = () => {
   return (
     <Routes>
       {/* Public Routes */}
+      <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
@@ -26,6 +28,28 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
+
+      <Route
+        path="/calendar"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <InterviewCalendarPage />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      {/* <Route
+        path="/interview"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <InterviewPage />
+            </Layout>
+          </ProtectedRoute>
+        }
+      /> */}
 
       <Route
         path="/jobs"
