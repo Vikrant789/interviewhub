@@ -21,7 +21,20 @@ const Layout = ({ children }) => {
                 }`
               }
             >
-              Dashboard
+              📊 Dashboard
+            </NavLink>
+
+            <NavLink
+              to="/calendar"
+              className={({ isActive }) =>
+                `block px-3 py-2 rounded ${
+                  isActive
+                    ? "bg-blue-100 text-blue-600 font-semibold"
+                    : "text-gray-700 hover:text-blue-600"
+                }`
+              }
+            >
+              📅 Calendar
             </NavLink>
 
             <NavLink
@@ -34,8 +47,21 @@ const Layout = ({ children }) => {
                 }`
               }
             >
-              Applications
+              📄 Applications
             </NavLink>
+
+            {/* <NavLink
+              to="/jobs"
+              className={({ isActive }) =>
+                `block px-3 py-2 rounded ${
+                  isActive
+                    ? "bg-blue-100 text-blue-600 font-semibold"
+                    : "text-gray-700 hover:text-blue-600"
+                }`
+              }
+            >
+              🎤 Interviews
+            </NavLink> */}
 
           </nav>
         </aside>
